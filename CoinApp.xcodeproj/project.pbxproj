@@ -13,6 +13,9 @@
 		52B70B4729811D0A00B3FE68 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52B70B4529811D0A00B3FE68 /* Main.storyboard */; };
 		52B70B4929811D0C00B3FE68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52B70B4829811D0C00B3FE68 /* Assets.xcassets */; };
 		52B70B4C29811D0C00B3FE68 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52B70B4A29811D0C00B3FE68 /* LaunchScreen.storyboard */; };
+		52B70B5529811D3700B3FE68 /* Coins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B70B5429811D3700B3FE68 /* Coins.swift */; };
+		52B70B5929811E8000B3FE68 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B70B5829811E8000B3FE68 /* WebService.swift */; };
+		52B70B5B29812D3B00B3FE68 /* CoinViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B70B5A29812D3B00B3FE68 /* CoinViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		52B70B4829811D0C00B3FE68 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		52B70B4B29811D0C00B3FE68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		52B70B4D29811D0C00B3FE68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52B70B5429811D3700B3FE68 /* Coins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coins.swift; sourceTree = "<group>"; };
+		52B70B5829811E8000B3FE68 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		52B70B5A29812D3B00B3FE68 /* CoinViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +62,8 @@
 		52B70B3E29811D0A00B3FE68 /* CoinApp */ = {
 			isa = PBXGroup;
 			children = (
+				52B70B5729811E6F00B3FE68 /* WebService */,
+				52B70B5329811D2000B3FE68 /* Model */,
 				52B70B3F29811D0A00B3FE68 /* AppDelegate.swift */,
 				52B70B4129811D0A00B3FE68 /* SceneDelegate.swift */,
 				52B70B4329811D0A00B3FE68 /* ViewController.swift */,
@@ -63,8 +71,25 @@
 				52B70B4829811D0C00B3FE68 /* Assets.xcassets */,
 				52B70B4A29811D0C00B3FE68 /* LaunchScreen.storyboard */,
 				52B70B4D29811D0C00B3FE68 /* Info.plist */,
+				52B70B5A29812D3B00B3FE68 /* CoinViewCell.swift */,
 			);
 			path = CoinApp;
+			sourceTree = "<group>";
+		};
+		52B70B5329811D2000B3FE68 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				52B70B5429811D3700B3FE68 /* Coins.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		52B70B5729811E6F00B3FE68 /* WebService */ = {
+			isa = PBXGroup;
+			children = (
+				52B70B5829811E8000B3FE68 /* WebService.swift */,
+			);
+			path = WebService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,7 +164,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				52B70B4429811D0A00B3FE68 /* ViewController.swift in Sources */,
+				52B70B5B29812D3B00B3FE68 /* CoinViewCell.swift in Sources */,
 				52B70B4029811D0A00B3FE68 /* AppDelegate.swift in Sources */,
+				52B70B5529811D3700B3FE68 /* Coins.swift in Sources */,
+				52B70B5929811E8000B3FE68 /* WebService.swift in Sources */,
 				52B70B4229811D0A00B3FE68 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
