@@ -10,7 +10,14 @@ import UIKit
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
-    var coinArray : [Coins] = []
+    var coinArray : [Coin] = []
+    var coinRates : [Rate]? {
+        didSet {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,57 +28,36 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func getCoins() {
-        let urlforCoins = URL(string: "https://rest-sandbox.coinapi.io/v1/assets?apikey=E361CADD-258E-4ACE-B955-5A1E6F6F7EC9&invert=true")!
-        let urlforIcons = URL(string: "https://rest.coinapi.io/v1/assets/icons/32?apikey=E361CADD-258E-4ACE-B955-5A1E6F6F7EC9")!
-        
-        WebServiceforCoinInfo().getData(url: urlforCoins) { coins in
+        guard let newURL = URL(string: "https://rest.coinapi.io/v1/exchangerate/TRY?apikey=CED82CB3-FFFA-4C38-90B2-F8AD0F5858FD") else { return }
+
+        WebServiceforNewCoinInfo().getData(url: newURL) { mycoins in
             
-            self.coinArray = coins
+            self.coinArray.append(mycoins)
+            self.coinRates = mycoins.rates
             
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-            print(coins)
+            print(mycoins.asset_id_base)
+            print(mycoins.rates)
+            
+//            DispatchQueue.main.async {
+//                self.tableView.reloadData()
+//            }
         }
-        
-//        MARK: for coinLabel Double
-//        let five = 5.435324039
-//        let siz = Double(round(1000 * five) / 1000)
-//        print(siz)
-        
-//        WebServiceforCoinIcon().getData(url: urlforIcons) { coinIcon in
-//            print(coinIcon)
-//        }
     }
     
-    
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return coinArray.count == nil ? 0 : self.coinArray.count
+        return coinRates?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CoinViewCell
-        cell.coinNameLabel.text = coinArray[indexPath.row].asset_id
+        if coinRates?[indexPath.row] != nil {
         
-        if coinArray[indexPath.row].price_usd != nil {
-
-            if let value = coinArray[indexPath.row].price_usd {
+            let rate = coinRates?[indexPath.row]
             
-                cell.coinValueLabel.text = "\(Double(round(1000 * value) / 1000))"
-                
-            }
+            cell.coinNameLabel.text = rate?.asset_id_quote
+            cell.coinValueLabel.text = "\(Double(round((rate?.rate)! * 1000) / 1000))"
             
         }
-        
-        
-//        coinArrayi bir değişkene atayıp if let kullanabilirsin.
-//        Örnegin:
-//        var coin = gelen veri
-//        İf let coin = coin{
-//          cell.coinValueLabel.text = coin
-//        }
-        
         
         return cell
     }
